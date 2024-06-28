@@ -1,3 +1,5 @@
-<div>
-    <h1>lokin</h1>
-</div>
+@extends('layout.auth')
+
+@section('auth-content')
+    lmaooo
+@endsection

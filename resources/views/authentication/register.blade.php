@@ -1,6 +1,5 @@
-@extends('layout.app')
-<div>
-    <h1 class="text-3xl font-bold underline">
-        Hello world!
-    </h1>
-</div>
+@extends('layout.auth')
+
+@section('main-content')
+    lmaommaaa
+@endsection
