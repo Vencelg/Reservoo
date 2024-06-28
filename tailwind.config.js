@@ -7,7 +7,11 @@ export default {
         "./node_modules/flowbite/**/*.js",
     ],
   theme: {
-    extend: {},
+    extend: {
+        backgroundImage: {
+            'image-auth': "url(http://localhost/images/auth-bg.png)",
+        }
+    },
   },
   plugins: [
       require('flowbite/plugin')

@@ -1,8 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <main>
-        <h1>auth</h1>
+    <main class="bg-image-auth bg-cover">
         @yield('auth-content')
     </main>
 @endsection

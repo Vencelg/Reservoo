@@ -5,30 +5,28 @@ namespace App\Services;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
-use App\Services\Definitions\AuthenticationServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
 
 class AuthenticationService implements Definitions\AuthenticationServiceInterface
 {
 
-    public function handleLogin(LoginUserRequest $request): RedirectResponse|View
+    public function handleLogin(LoginUserRequest $request): RedirectResponse
     {
         $user = User::where('email', $request->input('email'))->first();
         if (!($user instanceof User) || !Hash::check($request->input('password'), $user->password)) {
             return back()->with([
-                'error' => 'Invalid Credentials'
+                'errors' => 'Invalid Credentials'
             ]);
         }
 
         Auth::login($user);
 
-        return view('welcome');
+        return redirect()->route('home');
     }
 
-    public function handleRegister(RegisterUserRequest $request): RedirectResponse|View
+    public function handleRegister(RegisterUserRequest $request): RedirectResponse
     {
         $user = new User([
             'name' => $request->input('firstname') . ' ' . $request->input('lastname'),
@@ -39,6 +37,13 @@ class AuthenticationService implements Definitions\AuthenticationServiceInterfac
 
         Auth::login($user);
 
-        return view('welcome');
+        return redirect()->route('home');
+    }
+
+    public function handleLogout(): RedirectResponse
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }
