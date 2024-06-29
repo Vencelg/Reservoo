@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->prefix('authentication')->group(function () {
@@ -12,6 +13,10 @@ Route::middleware('guest')->prefix('authentication')->group(function () {
 
 Route::middleware('auth')->prefix('authentication')->group(function () {
     Route::get('/logout', [AuthenticationController::class, 'handleLogout'])->name('logout');
+});
+
+Route::middleware('auth')->prefix('restaurants')->group(function () {
+    Route::get('/{id}', [RestaurantController::class, 'detail'])->name('restaurant.detail');
 });
 
 
