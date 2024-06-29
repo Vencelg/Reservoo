@@ -10,6 +10,7 @@ export default {
     extend: {
         backgroundImage: {
             'image-auth': "url(http://localhost/images/auth-bg.png)",
+            'image-main': "url(http://localhost/images/main-bg.png)",
         }
     },
   },

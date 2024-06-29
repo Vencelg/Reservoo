@@ -21,7 +21,7 @@ class AuthenticationService implements Definitions\AuthenticationServiceInterfac
             ]);
         }
 
-        Auth::login($user);
+        Auth::login($user, $request->has('remember_me'));
 
         return redirect()->route('home');
     }
