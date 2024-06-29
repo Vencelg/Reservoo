@@ -10,6 +10,12 @@ Route::middleware('guest')->prefix('authentication')->group(function () {
     Route::post('/register', [AuthenticationController::class, 'handleRegister']);
 });
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->prefix('authentication')->group(function () {
+    Route::get('/logout', [AuthenticationController::class, 'handleLogout'])->name('logout');
 });
+
+
+
+Route::get('/homepage', function () {
+    return view('main.homepage');
+})->name('home')->middleware('auth');

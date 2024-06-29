@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Services\Definitions\AuthenticationServiceInterface;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class AuthenticationController extends Controller
@@ -20,7 +21,7 @@ class AuthenticationController extends Controller
         return view('authentication.login');
     }
 
-    public function handleLogin(LoginUserRequest $request): View
+    public function handleLogin(LoginUserRequest $request): RedirectResponse
     {
         return $this->authenticationService->handleLogin($request);
     }
@@ -30,8 +31,13 @@ class AuthenticationController extends Controller
         return view('authentication.register');
     }
 
-    public function handleRegister(RegisterUserRequest $request): View
+    public function handleRegister(RegisterUserRequest $request): RedirectResponse
     {
         return $this->authenticationService->handleRegister($request);
+    }
+
+    public function handleLogout(): RedirectResponse
+    {
+        return $this->authenticationService->handleLogout();
     }
 }
