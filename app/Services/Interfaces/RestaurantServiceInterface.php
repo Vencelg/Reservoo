@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Definitions;
+namespace App\Services\Interfaces;
 
 use App\Models\Restaurant;
 
