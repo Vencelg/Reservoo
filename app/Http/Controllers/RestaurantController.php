@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
-use App\Services\Definitions\RestaurantServiceInterface;
+use App\Services\Interfaces\RestaurantServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 

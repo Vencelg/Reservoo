@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
-use App\Services\Definitions\AuthenticationServiceInterface;
+use App\Services\Interfaces\AuthenticationServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 

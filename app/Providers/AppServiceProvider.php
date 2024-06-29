@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Services\AuthenticationService;
-use App\Services\Definitions\AuthenticationServiceInterface;
-use App\Services\Definitions\RestaurantServiceInterface;
+use App\Services\Interfaces\AuthenticationServiceInterface;
+use App\Services\Interfaces\RestaurantServiceInterface;
 use App\Services\RestaurantService;
 use Illuminate\Support\ServiceProvider;
 

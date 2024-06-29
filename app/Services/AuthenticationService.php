@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthenticationService implements Definitions\AuthenticationServiceInterface
+class AuthenticationService implements Interfaces\AuthenticationServiceInterface
 {
 
     public function handleLogin(LoginUserRequest $request): RedirectResponse

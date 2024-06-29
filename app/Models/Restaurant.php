@@ -16,6 +16,8 @@ class Restaurant extends Model
         'bio',
         'coordinates',
         'max_reservation_time',
+        'opening_time',
+        'closing_time',
     ];
 
     public function tags(): BelongsToMany
