@@ -16,13 +16,25 @@ class RestaurantFactory extends Factory
      */
     public function definition(): array
     {
+        $banner_url = [
+            'http://localhost/images/restaurants/rest1.jpg',
+            'http://localhost/images/restaurants/rest2.jpg',
+            'http://localhost/images/restaurants/rest3.jpg',
+            'http://localhost/images/restaurants/rest4.jpg',
+            'http://localhost/images/restaurants/rest5.jpeg',
+            'http://localhost/images/restaurants/rest6.jpg',
+        ];
+
         return [
             'name' => $this->faker->company,
             'bio' => $this->faker->paragraph,
             'coordinates' => $this->faker->latitude() . ',' . $this->faker->longitude(),
             'max_reservation_time' => $this->faker->numberBetween(2,4),
-            'opening_time' => $this->faker->numberBetween(7, 9), // in hours
-            'closing_time' => $this->faker->numberBetween(20, 24), // in hours
+            'opening_time' => $this->faker->numberBetween(7, 9),
+            'closing_time' => $this->faker->numberBetween(20, 24),
+            'rating' => $this->faker->randomFloat(2, 1, 5),
+            'reviews' => $this->faker->numberBetween(10, 99),
+            'banner_url' => $this->faker->randomElement($banner_url)
         ];
     }
 }

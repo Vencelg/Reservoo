@@ -21,7 +21,7 @@ class TableFactory extends Factory
 
         return [
             'restaurant_id' => Restaurant::factory(),
-            'code' => 'T'.$this->faker->unique()->randomNumber(2).$this->faker->randomLetter(),
+            'code' => 'T'.$this->faker->randomNumber(2).$this->faker->randomLetter(),
             'seats' => $seats,
         ];
     }

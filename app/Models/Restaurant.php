@@ -18,6 +18,9 @@ class Restaurant extends Model
         'max_reservation_time',
         'opening_time',
         'closing_time',
+        'rating',
+        'reviews',
+        'banner_url',
     ];
 
     public function tags(): BelongsToMany

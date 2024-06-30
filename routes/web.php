@@ -16,11 +16,6 @@ Route::middleware('auth')->prefix('authentication')->group(function () {
 });
 
 Route::middleware('auth')->prefix('restaurants')->group(function () {
+    Route::get('/', [RestaurantController::class, 'list'])->name('home');
     Route::get('/{id}', [RestaurantController::class, 'detail'])->name('restaurant.detail');
 });
-
-
-
-Route::get('/homepage', function () {
-    return view('main.homepage');
-})->name('home')->middleware('auth');

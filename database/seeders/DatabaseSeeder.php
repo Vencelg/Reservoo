@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         Tag::factory()->count(10)->create();
 
-        Restaurant::factory()->count(10)->create()->each(function ($restaurant) {
+        Restaurant::factory()->count(20)->create()->each(function ($restaurant) {
 
             $tags = Tag::inRandomOrder()->limit(rand(1, 3))->pluck('id');
             $restaurant->tags()->attach($tags);

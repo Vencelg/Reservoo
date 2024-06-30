@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('restaurants', function (Blueprint $table) {
-            $table->integer('closing_time')->after('max_reservation_time');
-            $table->integer('opening_time')->after('max_reservation_time');
+            $table->integer('reviews')->after('closing_time');
+            $table->float('rating')->after('reviews');
+            $table->string('banner_url')->after('rating');
         });
     }
 
@@ -23,7 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('restaurants', function (Blueprint $table) {
-            $table->dropColumn(['closing_time', 'opening_time']);
+            $table->dropColumn(['reviews', 'rating', 'banner_url']);
         });
     }
 };

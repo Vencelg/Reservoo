@@ -15,6 +15,15 @@ class RestaurantController extends Controller
     {
     }
 
+    public function list():View
+    {
+        $restaurants = $this->restaurantService->list(shuffle: true);
+
+        return view('main.restaurant.homepage', [
+            'restaurants' => $restaurants
+        ]);
+    }
+
     public function detail(int $id): View|RedirectResponse
     {
         $restaurant = $this->restaurantService->detail($id);
@@ -27,6 +36,5 @@ class RestaurantController extends Controller
         ]);
     }
     //TODO: Add method for restaurant list with filters
-    //TODO: Add method for restaurant detail, no other models
     //TODO: Add method for restaurant detail, with tables
 }
