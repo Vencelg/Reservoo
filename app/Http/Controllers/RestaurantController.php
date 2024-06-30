@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use App\Services\Interfaces\RestaurantServiceInterface;
+use App\Services\Interfaces\TagServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -11,6 +12,7 @@ class RestaurantController extends Controller
 {
     public function __construct(
         protected RestaurantServiceInterface $restaurantService,
+        protected TagServiceInterface $tagService,
     )
     {
     }
@@ -18,9 +20,11 @@ class RestaurantController extends Controller
     public function list():View
     {
         $restaurants = $this->restaurantService->list(shuffle: true);
+        $tags = $this->tagService->list();
 
         return view('main.restaurant.homepage', [
-            'restaurants' => $restaurants
+            'restaurants' => $restaurants,
+            'tags' => $tags,
         ]);
     }
 
