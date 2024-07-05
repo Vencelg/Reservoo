@@ -11,7 +11,7 @@ class ReviewService implements ReviewServiceInterface
 {
     public function list(int $id): Collection
     {
-        return Review::with('user')->get();
+        return Review::with('user')->where('restaurant_id', $id)->get();
     }
 
     public function store(StoreReviewRequest $request): Review
