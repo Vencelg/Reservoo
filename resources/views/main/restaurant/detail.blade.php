@@ -1,8 +1,8 @@
 @extends('layout.main')
 
 @section('main-content')
-    <div class="h-screen">
-        <div style="background-image: url({{$restaurant->banner_url}})" class="bg-cover bg-center bg-no-repeat h-[40%]">
+    <div class="bg-gray-50">
+        <div style="background-image: url({{$restaurant->banner_url}})" class="bg-cover bg-center bg-no-repeat h-[40vh]">
             <div class="bg-black bg-opacity-50 h-full text-white pl-5 pb-5 flex justify-start items-end">
                 <h1 class="text-5xl">{{$restaurant->name}}</h1>
                 <div class="flex items-center ml-3 mb-2">
@@ -25,25 +25,44 @@
                 </div>
             </div>
         </div>
-        <div class="w-[80%] m-auto mt-10 grid grid-cols-2 gap-5 justify-items-end">
-            <div class="bg-blue-600 rounded-2xl p-5 h-full flex justify-between flex-col">
-                <p class="text-white mb-5">
-                    {{$restaurant->bio}}
-                </p>
-                <a href="{{route('tables.list', ['id' => $restaurant->id])}}"><button type="button" class="w-1/3 bg-white text-blue-600 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Reserve now</button></a>
+        <div class="w-[80%] m-auto mt-10 bg-gray-50">
+            <div>
+                <h1 class="text-2xl font-medium">About</h1>
+                <hr class="my-5">
+                <p class="text-justify">{{$restaurant->bio}}</p>
             </div>
-            <div class="bg-blue-600 text-white p-5 rounded-2xl flex justify-evenly items-center w-full h-full">
-                <div class="w-fit pr-5">
-                    <p>{{$restaurant->street}}</p>
-                    <p>{{$restaurant->city}}</p>
-                    <p>{{$restaurant->postcode}}</p>
+
+            <div class="mt-10">
+                <a href="{{route('tables.list', ['id' => $restaurant->id])}}">
+                    <button type="button" class="w-full rounded-lg bg-blue-700 px-3 py-2  font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 lg:w-auto">Make reservation</button>
+                </a>
+            </div>
+
+            <div class="flex flex-col justify-between items-start py-16">
+                <h1 class="text-2xl font-medium">Contact</h1>
+                <hr class="my-5 w-full">
+                <div class="flex justify-between items-center w-full">
+                    <div>
+                        <div class="mb-5">
+                            <p class="text-justify font-medium">{{$restaurant->email}}</p>
+                            <p class="text-justify font-medium">{{$restaurant->phone_number}}</p>
+                        </div>
+                        <div>
+                            <p class="text-justify">{{$restaurant->street}}</p>
+                            <p class="text-justify">{{$restaurant->city}}</p>
+                            <p class="text-justify">{{$restaurant->postcode}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <x-maps-leaflet
+                            style="width: 350px; height: 250px;"
+                            :centerPoint="['lat' => $restaurant->latitude, 'long' => $restaurant->longitude]"
+                            :markers="[['lat' => $restaurant->latitude, 'long' => $restaurant->longitude]]"
+                            :zoom-level="20"
+                        >
+                        </x-maps-leaflet>
+                    </div>
                 </div>
-                <x-maps-leaflet
-                    style="width: 100%; height: 100%"
-                    :centerPoint="['lat' => $restaurant->latitude, 'long' => $restaurant->longitude]"
-                    :markers="[['lat' => $restaurant->latitude, 'long' => $restaurant->longitude]]"
-                    :zoomLevel="20">>
-                </x-maps-leaflet>
             </div>
         </div>
     </div>

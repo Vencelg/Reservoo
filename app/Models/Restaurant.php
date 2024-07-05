@@ -22,6 +22,8 @@ class Restaurant extends Model
         'street',
         'city',
         'postcode',
+        'email',
+        'phone_number',
         'max_reservation_time',
         'opening_time',
         'closing_time',
