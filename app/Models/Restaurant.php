@@ -13,6 +13,7 @@ class Restaurant extends Model
 
     protected array $timeslots;
     protected array $availableSeats;
+    protected float $rating;
 
     protected $fillable = [
         'name',
@@ -27,9 +28,11 @@ class Restaurant extends Model
         'max_reservation_time',
         'opening_time',
         'closing_time',
-        'rating',
-        'reviews',
         'banner_url',
+    ];
+
+    protected $withCount = [
+        'reviews'
     ];
 
     public function tags(): BelongsToMany
@@ -40,6 +43,11 @@ class Restaurant extends Model
     public function tables(): HasMany
     {
         return $this->hasMany(Table::class, 'restaurant_id');
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'restaurant_id');
     }
 
     public function getTimeslots(): array
@@ -64,8 +72,14 @@ class Restaurant extends Model
         return $this;
     }
 
-    public function reviews(): HasMany
+    public function getRating(): float
     {
-        return $this->hasMany(Review::class, 'restaurant_id');
+        return $this->rating;
+    }
+
+    public function setRating(float $rating): self
+    {
+        $this->rating = $rating;
+        return $this;
     }
 }

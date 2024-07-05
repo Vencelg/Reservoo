@@ -12,7 +12,11 @@ class RestaurantService implements RestaurantServiceInterface
 
     public function list(bool $shuffle = false): Collection
     {
-        $restaurants = Restaurant::with('tags')->get();
+        $restaurants = Restaurant::with('tags')->get()->map(function (Restaurant $restaurant) {
+            $restaurant->setRating($this->getRating($restaurant));
+
+            return $restaurant;
+        });
         if ($shuffle) {
             $restaurants = $restaurants->shuffle();
         }
@@ -25,6 +29,7 @@ class RestaurantService implements RestaurantServiceInterface
         $restaurant = Restaurant::find($id);
         $restaurant->setTimeslots($this->getTimeslots($restaurant));
         $restaurant->setAvailableSeats($this->getAvailableSeats($restaurant));
+        $restaurant->setRating($this->getRating($restaurant));
 
         return $restaurant;
     }
@@ -47,5 +52,17 @@ class RestaurantService implements RestaurantServiceInterface
         }
 
         return $timeslots;
+    }
+
+    public function getRating(Restaurant $restaurant): float
+    {
+        $reviews = $restaurant->reviews;
+        $ratings = [];
+
+        foreach ($reviews as $review) {
+            $ratings[] = $review->rating;
+        }
+
+        return round(array_sum($ratings) / count($ratings), 2);
     }
 }

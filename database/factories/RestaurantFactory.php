@@ -38,8 +38,6 @@ class RestaurantFactory extends Factory
             'max_reservation_time' => $this->faker->numberBetween(2,4),
             'opening_time' => $this->faker->numberBetween(7, 9).":00",
             'closing_time' => $this->faker->numberBetween(20, 24).":00",
-            'rating' => $this->faker->randomFloat(2, 1, 5),
-            'reviews' => $this->faker->numberBetween(10, 99),
             'banner_url' => $this->faker->randomElement($banner_url)
         ];
     }
