@@ -11,10 +11,17 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    protected array $timeslots;
+    protected array $availableSeats;
+
     protected $fillable = [
         'name',
         'bio',
-        'coordinates',
+        'latitude',
+        'longitude',
+        'street',
+        'city',
+        'postcode',
         'max_reservation_time',
         'opening_time',
         'closing_time',
@@ -31,5 +38,27 @@ class Restaurant extends Model
     public function tables(): HasMany
     {
         return $this->hasMany(Table::class, 'restaurant_id');
+    }
+
+    public function getTimeslots(): array
+    {
+        return $this->timeslots;
+    }
+
+    public function setTimeslots(array $timeslots): self
+    {
+        $this->timeslots = $timeslots;
+        return $this;
+    }
+
+    public function getAvailableSeats(): array
+    {
+        return $this->availableSeats;
+    }
+
+    public function setAvailableSeats(array $availableSeats): self
+    {
+        $this->availableSeats = $availableSeats;
+        return $this;
     }
 }

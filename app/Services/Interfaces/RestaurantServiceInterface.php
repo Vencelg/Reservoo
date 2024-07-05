@@ -9,4 +9,7 @@ interface RestaurantServiceInterface
 {
     public function list(bool $shuffle = false): Collection;
     public function detail(int $id): ?Restaurant;
+    public function getAvailableSeats(Restaurant $restaurant): array;
+    public function getTimeslots(Restaurant $restaurant): array;
+
 }

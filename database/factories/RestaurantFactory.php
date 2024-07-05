@@ -28,10 +28,14 @@ class RestaurantFactory extends Factory
         return [
             'name' => $this->faker->company,
             'bio' => $this->faker->paragraph,
-            'coordinates' => $this->faker->latitude() . ',' . $this->faker->longitude(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
+            'street' => $this->faker->streetAddress(),
+            'city' => $this->faker->city(),
+            'postcode' => $this->faker->postcode(),
             'max_reservation_time' => $this->faker->numberBetween(2,4),
-            'opening_time' => $this->faker->numberBetween(7, 9),
-            'closing_time' => $this->faker->numberBetween(20, 24),
+            'opening_time' => $this->faker->numberBetween(7, 9).":00",
+            'closing_time' => $this->faker->numberBetween(20, 24).":00",
             'rating' => $this->faker->randomFloat(2, 1, 5),
             'reviews' => $this->faker->numberBetween(10, 99),
             'banner_url' => $this->faker->randomElement($banner_url)

@@ -39,6 +39,4 @@ class RestaurantController extends Controller
             'restaurant' => $restaurant,
         ]);
     }
-    //TODO: Add method for restaurant list with filters
-    //TODO: Add method for restaurant detail, with tables
 }

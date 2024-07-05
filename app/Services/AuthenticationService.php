@@ -5,11 +5,12 @@ namespace App\Services;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
+use App\Services\Interfaces\AuthenticationServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthenticationService implements Interfaces\AuthenticationServiceInterface
+class AuthenticationService implements AuthenticationServiceInterface
 {
 
     public function handleLogin(LoginUserRequest $request): RedirectResponse

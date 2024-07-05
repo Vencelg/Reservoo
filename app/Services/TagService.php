@@ -6,7 +6,7 @@ use App\Models\Tag;
 use App\Services\Interfaces\TagServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class TagService implements Interfaces\TagServiceInterface
+class TagService implements TagServiceInterface
 {
 
     public function list(bool $shuffle = false): Collection
