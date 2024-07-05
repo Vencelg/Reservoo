@@ -18,7 +18,9 @@ class AuthenticationService implements AuthenticationServiceInterface
         $user = User::where('email', $request->input('email'))->first();
         if (!($user instanceof User) || !Hash::check($request->input('password'), $user->password)) {
             return back()->with([
-                'errors' => 'Invalid Credentials'
+                'errors' => 'Invalid Credentials',
+            ])->withInput([
+                'email' => $request->input('email')
             ]);
         }
 
