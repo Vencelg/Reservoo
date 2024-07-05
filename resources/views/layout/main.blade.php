@@ -36,7 +36,7 @@
                         </button>
                         <ul id="dropdown-example" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#" class="flex items-center w-full p-2 hover:text-blue-600 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">My reservations</a>
+                                <a href="{{route('reservations.authUserList')}}" class="flex items-center w-full p-2 hover:text-blue-600 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">My reservations</a>
                             </li>
                             <li>
                                 <a href="{{route('logout')}}" class="flex items-center w-full p-2 hover:text-blue-600 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Logout</a>

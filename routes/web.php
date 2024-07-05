@@ -20,6 +20,7 @@ Route::middleware('auth')->prefix('authentication')->group(function () {
 Route::middleware('auth')->prefix('reservations')->group(function () {
     Route::get('/', [ReservationController::class, 'authUserList'])->name('reservations.authUserList');
     Route::post('/', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::delete('/{id}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 });
 
 Route::middleware('auth')->prefix('restaurants')->group(function () {

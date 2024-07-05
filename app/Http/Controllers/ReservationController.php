@@ -32,4 +32,13 @@ class ReservationController extends Controller
             'success' => 'Reservation made successfully'
         ]);
     }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        $this->reservationService->destroy($id);
+
+        return redirect()->route('reservations.authUserList')->with([
+            'success' => 'Reservation deleted successfully'
+        ]);
+    }
 }

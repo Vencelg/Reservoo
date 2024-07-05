@@ -10,4 +10,5 @@ interface ReservationServiceInterface
 {
     public function authUserList(): Collection;
     public function store(StoreReservationRequest $request): Reservation;
+    public function destroy(int $id): void;
 }

@@ -13,7 +13,7 @@ class ReservationService implements ReservationServiceInterface
 
     public function authUserList(): Collection
     {
-        return Reservation::where('user_id', Auth::id())->get();
+        return Reservation::with('table.restaurant')->where('user_id', Auth::id())->get();
     }
 
     public function store(StoreReservationRequest $request): Reservation
@@ -27,5 +27,11 @@ class ReservationService implements ReservationServiceInterface
         $reservation->save();
 
         return $reservation;
+    }
+
+    public function destroy(int $id): void
+    {
+        $reservation = Reservation::findOrFail($id);
+        $reservation->delete();
     }
 }
