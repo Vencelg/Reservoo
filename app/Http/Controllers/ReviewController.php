@@ -33,7 +33,7 @@ class ReviewController extends Controller
     {
         $this->reviewService->store($request);
 
-        return redirect()->route('')->with([
+        return redirect()->route('reviews.list', ['id' => $request->input('restaurant_id')])->with([
             'success' => 'Review made successfully'
         ]);
     }
