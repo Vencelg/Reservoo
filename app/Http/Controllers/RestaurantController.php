@@ -22,7 +22,7 @@ class RestaurantController extends Controller
         $restaurants = $this->restaurantService->list(shuffle: true);
         $tags = $this->tagService->list();
 
-        return view('main.restaurant.homepage', [
+        return view('main.restaurants.homepage', [
             'restaurants' => $restaurants,
             'tags' => $tags,
         ]);
@@ -35,7 +35,7 @@ class RestaurantController extends Controller
             return redirect()->back();
         }
 
-        return view('main.restaurant.detail', [
+        return view('main.restaurants.detail', [
             'restaurant' => $restaurant,
         ]);
     }

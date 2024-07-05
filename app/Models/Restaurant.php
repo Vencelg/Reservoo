@@ -63,4 +63,9 @@ class Restaurant extends Model
         $this->availableSeats = $availableSeats;
         return $this;
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'restaurant_id');
+    }
 }

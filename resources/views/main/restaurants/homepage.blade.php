@@ -43,11 +43,11 @@
             @if($restaurants)
                 @foreach($restaurants as $restaurant)
                     <div data-name="{{$restaurant->name}}" data-rating="{{$restaurant->rating}}" data-reviews="{{$restaurant->reviews}}" class="restaurant_object transition-all duration-[90ms] hover:outline outline-blue-600 outline-offset-2 outline-4 w-full bg-white rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="{{route('restaurant.detail', ['id' => $restaurant->id])}}">
+                        <a href="{{route('restaurants.detail', ['id' => $restaurant->id])}}">
                             <div style="background-image: url({{$restaurant->banner_url}});" class="h-[10rem] bg-cover bg-no-repeat rounded-t-2xl"></div>
                         </a>
                         <div class="px-5 pb-5">
-                            <a href="{{route('restaurant.detail', ['id' => $restaurant->id])}}">
+                            <a href="{{route('restaurants.detail', ['id' => $restaurant->id])}}">
                                 <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white pt-2">{{$restaurant->name}}</h5>
                             </a>
                             <div class="flex items-center mt-2.5 mb-5">

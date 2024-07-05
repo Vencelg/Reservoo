@@ -6,10 +6,12 @@ use App\Services\AuthenticationService;
 use App\Services\Interfaces\AuthenticationServiceInterface;
 use App\Services\Interfaces\ReservationServiceInterface;
 use App\Services\Interfaces\RestaurantServiceInterface;
+use App\Services\Interfaces\ReviewServiceInterface;
 use App\Services\Interfaces\TableServiceInterface;
 use App\Services\Interfaces\TagServiceInterface;
 use App\Services\ReservationService;
 use App\Services\RestaurantService;
+use App\Services\ReviewService;
 use App\Services\TableService;
 use App\Services\TagService;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(TagServiceInterface::class, TagService::class);
         $this->app->singleton(TableServiceInterface::class, TableService::class);
         $this->app->singleton(ReservationServiceInterface::class, ReservationService::class);
+        $this->app->singleton(ReviewServiceInterface::class, ReviewService::class);
     }
 
     /**

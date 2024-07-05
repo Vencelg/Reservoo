@@ -3,8 +3,13 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TableController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+   return redirect()->route('home');
+});
 
 Route::middleware('guest')->prefix('authentication')->group(function () {
     Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
@@ -25,6 +30,10 @@ Route::middleware('auth')->prefix('reservations')->group(function () {
 
 Route::middleware('auth')->prefix('restaurants')->group(function () {
     Route::get('/', [RestaurantController::class, 'list'])->name('home');
-    Route::get('/{id}', [RestaurantController::class, 'detail'])->name('restaurant.detail');
+    Route::get('/{id}', [RestaurantController::class, 'detail'])->name('restaurants.detail');
     Route::get('/{id}/tables', [TableController::class, 'list'])->name('tables.list');
+
+    Route::get('/{id}/reviews', [ReviewController::class, 'list'])->name('reviews.list');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
