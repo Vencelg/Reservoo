@@ -63,6 +63,6 @@ class RestaurantService implements RestaurantServiceInterface
             $ratings[] = $review->rating;
         }
 
-        return round(array_sum($ratings) / count($ratings), 2);
+        return count($ratings) !== 0 ? round(array_sum($ratings) / count($ratings), 2) : 0;
     }
 }
