@@ -10,6 +10,10 @@ use Illuminate\View\View;
 
 class RestaurantController extends Controller
 {
+    /**
+     * @param RestaurantServiceInterface $restaurantService
+     * @param TagServiceInterface $tagService
+     */
     public function __construct(
         protected RestaurantServiceInterface $restaurantService,
         protected TagServiceInterface $tagService,
@@ -17,17 +21,24 @@ class RestaurantController extends Controller
     {
     }
 
+    /**
+     * @return View
+     */
     public function list():View
     {
         $restaurants = $this->restaurantService->list(shuffle: true);
         $tags = $this->tagService->list();
 
-        return view('main.restaurant.homepage', [
+        return view('main.restaurants.homepage', [
             'restaurants' => $restaurants,
             'tags' => $tags,
         ]);
     }
 
+    /**
+     * @param int $id
+     * @return View|RedirectResponse
+     */
     public function detail(int $id): View|RedirectResponse
     {
         $restaurant = $this->restaurantService->detail($id);
@@ -35,7 +46,7 @@ class RestaurantController extends Controller
             return redirect()->back();
         }
 
-        return view('main.restaurant.detail', [
+        return view('main.restaurants.detail', [
             'restaurant' => $restaurant,
         ]);
     }

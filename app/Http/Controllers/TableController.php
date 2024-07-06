@@ -10,6 +10,10 @@ use Illuminate\View\View;
 
 class TableController extends Controller
 {
+    /**
+     * @param RestaurantServiceInterface $restaurantService
+     * @param TableServiceInterface $tableService
+     */
     public function __construct(
         protected RestaurantServiceInterface $restaurantService,
         protected TableServiceInterface $tableService,
@@ -17,6 +21,10 @@ class TableController extends Controller
     {
     }
 
+    /**
+     * @param int $id
+     * @return View
+     */
     public function list(int $id): View
     {
         $date = request()->query('date')

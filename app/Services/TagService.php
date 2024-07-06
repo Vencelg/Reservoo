@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Collection;
 class TagService implements TagServiceInterface
 {
 
+    /**
+     * @param bool $shuffle
+     * @return Collection
+     */
     public function list(bool $shuffle = false): Collection
     {
         $tags = Tag::all();

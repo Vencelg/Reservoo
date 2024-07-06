@@ -46,8 +46,19 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * @return HasMany
+     */
     public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class, 'user_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'user_id');
     }
 }

@@ -10,11 +10,17 @@ class Tag extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'color',
     ];
 
+    /**
+     * @return BelongsToMany
+     */
     public function restaurants(): BelongsToMany
     {
         return $this->belongsToMany(Restaurant::class, 'restaurant_tag');

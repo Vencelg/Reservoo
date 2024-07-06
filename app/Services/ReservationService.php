@@ -11,11 +11,18 @@ use Illuminate\Support\Facades\Auth;
 class ReservationService implements ReservationServiceInterface
 {
 
+    /**
+     * @return Collection
+     */
     public function authUserList(): Collection
     {
         return Reservation::with('table.restaurant')->where('user_id', Auth::id())->get();
     }
 
+    /**
+     * @param StoreReservationRequest $request
+     * @return Reservation
+     */
     public function store(StoreReservationRequest $request): Reservation
     {
         $reservation = new Reservation([
@@ -29,6 +36,10 @@ class ReservationService implements ReservationServiceInterface
         return $reservation;
     }
 
+    /**
+     * @param int $id
+     * @return void
+     */
     public function destroy(int $id): void
     {
         $reservation = Reservation::findOrFail($id);

@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Hash;
 class AuthenticationService implements AuthenticationServiceInterface
 {
 
+    /**
+     * @param LoginUserRequest $request
+     * @return RedirectResponse
+     */
     public function handleLogin(LoginUserRequest $request): RedirectResponse
     {
         $user = User::where('email', $request->input('email'))->first();
@@ -29,6 +33,10 @@ class AuthenticationService implements AuthenticationServiceInterface
         return redirect()->route('home');
     }
 
+    /**
+     * @param RegisterUserRequest $request
+     * @return RedirectResponse
+     */
     public function handleRegister(RegisterUserRequest $request): RedirectResponse
     {
         $user = new User([
@@ -43,6 +51,9 @@ class AuthenticationService implements AuthenticationServiceInterface
         return redirect()->route('home');
     }
 
+    /**
+     * @return RedirectResponse
+     */
     public function handleLogout(): RedirectResponse
     {
         Auth::logout();

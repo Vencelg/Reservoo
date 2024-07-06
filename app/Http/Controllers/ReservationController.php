@@ -9,12 +9,18 @@ use Illuminate\View\View;
 
 class ReservationController extends Controller
 {
+    /**
+     * @param ReservationServiceInterface $reservationService
+     */
     public function __construct(
         protected ReservationServiceInterface $reservationService,
     )
     {
     }
 
+    /**
+     * @return View
+     */
     public function authUserList(): View
     {
         $reservations = $this->reservationService->authUserList();
@@ -24,6 +30,10 @@ class ReservationController extends Controller
         ]);
     }
 
+    /**
+     * @param StoreReservationRequest $request
+     * @return RedirectResponse
+     */
     public function store(StoreReservationRequest $request): RedirectResponse
     {
         $this->reservationService->store($request);
@@ -33,6 +43,10 @@ class ReservationController extends Controller
         ]);
     }
 
+    /**
+     * @param int $id
+     * @return RedirectResponse
+     */
     public function destroy(int $id): RedirectResponse
     {
         $this->reservationService->destroy($id);

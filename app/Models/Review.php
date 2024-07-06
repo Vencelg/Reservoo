@@ -2,19 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Reservation extends Model
+class Review extends Model
 {
+    use HasFactory;
+
     /**
      * @var string[]
      */
     protected $fillable = [
         'user_id',
-        'table_id',
-        'reserved_from',
-        'reserved_to',
+        'restaurant_id',
+        'title',
+        'description',
+        'rating',
     ];
 
     /**
@@ -28,8 +32,8 @@ class Reservation extends Model
     /**
      * @return BelongsTo
      */
-    public function table(): BelongsTo
+    public function restaurant(): BelongsTo
     {
-        return $this->belongsTo(Table::class);
+        return $this->belongsTo(Restaurant::class);
     }
 }
