@@ -9,11 +9,19 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ReviewService implements ReviewServiceInterface
 {
+    /**
+     * @param int $id
+     * @return Collection
+     */
     public function list(int $id): Collection
     {
         return Review::with('user')->where('restaurant_id', $id)->get();
     }
 
+    /**
+     * @param StoreReviewRequest $request
+     * @return Review
+     */
     public function store(StoreReviewRequest $request): Review
     {
         $review = new Review([
@@ -28,6 +36,10 @@ class ReviewService implements ReviewServiceInterface
         return $review;
     }
 
+    /**
+     * @param int $id
+     * @return void
+     */
     public function destroy(int $id): void
     {
         $review = Review::findOrFail($id);

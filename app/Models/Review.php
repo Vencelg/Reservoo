@@ -10,6 +10,9 @@ class Review extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'user_id',
         'restaurant_id',
@@ -18,11 +21,17 @@ class Review extends Model
         'rating',
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class);

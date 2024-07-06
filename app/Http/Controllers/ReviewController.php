@@ -11,6 +11,10 @@ use Illuminate\View\View;
 
 class ReviewController extends Controller
 {
+    /**
+     * @param ReviewServiceInterface $reviewService
+     * @param RestaurantServiceInterface $restaurantService
+     */
     public function __construct(
         protected ReviewServiceInterface $reviewService,
         protected RestaurantServiceInterface $restaurantService,
@@ -18,6 +22,10 @@ class ReviewController extends Controller
     {
     }
 
+    /**
+     * @param int $id
+     * @return View
+     */
     public function list(int $id): View
     {
         $reviews =  $this->reviewService->list($id);
@@ -29,6 +37,10 @@ class ReviewController extends Controller
         ]);
     }
 
+    /**
+     * @param StoreReviewRequest $request
+     * @return RedirectResponse
+     */
     public function store(StoreReviewRequest $request): RedirectResponse
     {
         $this->reviewService->store($request);
@@ -38,6 +50,10 @@ class ReviewController extends Controller
         ]);
     }
 
+    /**
+     * @param int $id
+     * @return RedirectResponse
+     */
     public function destroy(int $id): RedirectResponse
     {
         $this->reviewService->destroy($id);

@@ -11,12 +11,20 @@ use Illuminate\Support\Facades\Log;
 
 class TableService implements TableServiceInterface
 {
+    /**
+     * @param RestaurantServiceInterface $restaurantService
+     */
     public function __construct(
         protected RestaurantServiceInterface$restaurantService,
     )
     {
     }
 
+    /**
+     * @param int $restaurantId
+     * @param string $date
+     * @return Collection
+     */
     public function list(int $restaurantId, string $date): Collection
     {
         return Table::with(['restaurant'])
@@ -28,6 +36,11 @@ class TableService implements TableServiceInterface
         });
     }
 
+    /**
+     * @param Table $table
+     * @param string $date
+     * @return array
+     */
     public function generateAvailableTimes(Table $table, string $date): array
     {
         $restaurant = $table->restaurant;

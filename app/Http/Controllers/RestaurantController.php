@@ -10,6 +10,10 @@ use Illuminate\View\View;
 
 class RestaurantController extends Controller
 {
+    /**
+     * @param RestaurantServiceInterface $restaurantService
+     * @param TagServiceInterface $tagService
+     */
     public function __construct(
         protected RestaurantServiceInterface $restaurantService,
         protected TagServiceInterface $tagService,
@@ -17,6 +21,9 @@ class RestaurantController extends Controller
     {
     }
 
+    /**
+     * @return View
+     */
     public function list():View
     {
         $restaurants = $this->restaurantService->list(shuffle: true);
@@ -28,6 +35,10 @@ class RestaurantController extends Controller
         ]);
     }
 
+    /**
+     * @param int $id
+     * @return View|RedirectResponse
+     */
     public function detail(int $id): View|RedirectResponse
     {
         $restaurant = $this->restaurantService->detail($id);
