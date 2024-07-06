@@ -22,11 +22,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'jdoe@email.com',
         ]);
 
+        User::factory()->count(9)->create();
         Tag::factory()->count(10)->create();
 
-        Restaurant::factory()->count(20)->create()->each(function ($restaurant) use ($user) {
+        Restaurant::factory()->count(20)->create()->each(function ($restaurant) {
 
             $tags = Tag::inRandomOrder()->limit(rand(1, 3))->pluck('id');
+            $user = User::inRandomOrder()->first();
             $restaurant->tags()->attach($tags);
 
             Table::factory()->count(rand(5, 10))->create([
