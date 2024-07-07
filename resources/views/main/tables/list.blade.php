@@ -147,6 +147,7 @@
         window.addEventListener('load', () => {
             reservationDateSelect.value = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
             applyFilters();
+            renderStartTimes();
             renderEndTimes();
             addEventToForms();
         });
@@ -204,6 +205,29 @@
                     option.value = time;
                     option.textContent = time;
                     reservationEndSelect.appendChild(option);
+                }
+            });
+        }
+
+        function renderStartTimes() {
+            const reservationAvailableTimes = JSON.parse(reservationEndSelect.getAttribute('data-restaurant-available-times'));
+            reservationAvailableTimes.pop();
+            reservationStartSelect.innerHTML = '';
+
+            const now = new Date();
+            const selectedDate = new Date(reservationDateSelect.value);
+
+            reservationAvailableTimes.forEach(time => {
+                const [hours, minutes] = time.split(':').map(Number);
+                const timeDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), hours, minutes, 0);
+
+                const isToday = now.toDateString() === timeDate.toDateString();
+
+                if (!isToday || timeDate > now) {
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    reservationStartSelect.appendChild(option);
                 }
             });
         }

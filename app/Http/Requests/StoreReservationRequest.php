@@ -23,8 +23,8 @@ class StoreReservationRequest extends FormRequest
     {
         return [
             'table_id' => ['required', 'exists:tables,id'],
-            'reserved_from' => ['required', 'date:Y-m-d H:i:s'],
-            'reserved_to' => ['required', 'date:Y-m-d H:i:s'],
+            'reserved_from' => ['required', 'date:Y-m-d H:i:s', 'after_or_equal:now'],
+            'reserved_to' => ['required', 'date:Y-m-d H:i:s', 'after:reserved_from'],
         ];
     }
 }
