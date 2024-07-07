@@ -21,4 +21,11 @@ interface TableServiceInterface
      */
     public function generateAvailableTimes(Table $table, string $date): array;
 
+    /**
+     * @param int $tableId
+     * @param string $reservedFrom
+     * @param string $reservedTo
+     * @return bool
+     */
+    public function isTableAvailable(int $tableId, string $reservedFrom, string $reservedTo): bool;
 }

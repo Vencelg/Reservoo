@@ -69,7 +69,7 @@ class ReviewTest extends TestCase
         $response->assertSee("This restaurant has no reviews yet");
     }
 
-    public function test_user_can_create_review_with_valid_values()
+    public function test_user_can_create_review_with_valid_data()
     {
         $response = $this->post(route('reviews.store'), [
             'title' => 'example title',
@@ -85,7 +85,7 @@ class ReviewTest extends TestCase
         ]);
     }
 
-    public function test_user_cannot_create_review_with_invalid_values()
+    public function test_user_cannot_create_review_with_invalid_data()
     {
         $response = $this->post(route('reviews.store'), [
             'title' => 'example title',

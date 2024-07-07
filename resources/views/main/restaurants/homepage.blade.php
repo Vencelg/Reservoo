@@ -7,7 +7,7 @@
                 <div class="w-full">
                         <label for="search" class="block mb-2 text-sm font-medium text-white dark:text-white">Search restaurants</label>
                     <div class="relative w-full">
-                        <input onvolumechange="applySearch()" type="search" id="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="What are you looking for..." required />
+                        <input type="search" id="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="What are you looking for..." required />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                 <h1>Sorry, we could't find what you were looking for...</h1>
             </div>
                 @forelse($restaurants as $restaurant)
-                    <div data-name="{{$restaurant->name}}" data-rating="{{$restaurant->getRating()}}" data-reviews="{{$restaurant->reviews_count}}" class="restaurant_object transition-all duration-[90ms] hover:outline outline-blue-600 outline-offset-2 outline-4 w-full bg-white rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div data-name="{{$restaurant->name}}" data-rating="{{$restaurant->getRating()}}" data-reviews="{{$restaurant->reviews_count}}" class="restaurant_object transition-all duration-[90ms] hover:outline outline-blue-600 outline-offset-2 outline-4 w-full bg-blue-50 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="{{route('restaurants.detail', ['id' => $restaurant->id])}}">
                             <div style="background-image: url({{$restaurant->banner_url}});" class="h-[10rem] bg-cover bg-no-repeat rounded-t-2xl"></div>
                         </a>

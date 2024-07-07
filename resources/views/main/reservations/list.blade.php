@@ -75,8 +75,9 @@
                         </div>
                     @endif
                     <div class="gap-4 sm:flex sm:items-center sm:justify-between">
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Your
-                            reservations</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
+                            Your reservations
+                        </h2>
                         <div class="mt-6 gap-4 space-y-4 sm:mt-0 sm:flex sm:items-center sm:justify-end sm:space-y-0">
 
                         </div>

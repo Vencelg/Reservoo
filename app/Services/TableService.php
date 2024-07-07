@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Http\Requests\StoreReservationRequest;
+use App\Models\Reservation;
 use App\Models\Table;
 use App\Services\Interfaces\RestaurantServiceInterface;
 use App\Services\Interfaces\TableServiceInterface;
@@ -57,5 +59,19 @@ class TableService implements TableServiceInterface
             });
         }
         return array_values($timeslots);
+    }
+
+    public function isTableAvailable(int $tableId, string $reservedFrom, string $reservedTo): bool
+    {
+        $reservation = Reservation::where('table_id', $tableId)
+            ->where(function ($query) use ($reservedFrom, $reservedTo) {
+                $query->where(function ($query) use ($reservedFrom, $reservedTo) {
+                    $query->where('reserved_from', '<', $reservedTo)
+                        ->where('reserved_to', '>', $reservedFrom);
+                });
+            })
+            ->exists();
+
+        return !$reservation;
     }
 }

@@ -16,9 +16,9 @@ interface ReservationServiceInterface
 
     /**
      * @param StoreReservationRequest $request
-     * @return Reservation
+     * @return Reservation|RedirectResponse
      */
-    public function store(StoreReservationRequest $request): Reservation;
+    public function store(StoreReservationRequest $request): Reservation|RedirectResponse;
 
     /**
      * @param int $id
