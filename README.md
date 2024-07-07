@@ -63,7 +63,7 @@ Restaurant reservation system. Create an account, reserve a table at your favori
     ```
 8. **Install JavaScript dependencies**:
     ```bash
-    ./vendor/bin/sail npm i
+    ./vendor/bin/sail npm install
     ```
 
 9. **Compile dependencies**:
@@ -106,6 +106,7 @@ Restaurant reservation system. Create an account, reserve a table at your favori
     ```
 
 6. **Run database migrations and seeders**:
+    - Sometimes the first migration attempt fails, so you have to run it twice.
     ```bash
     php artisan migrate --seed
     ```
