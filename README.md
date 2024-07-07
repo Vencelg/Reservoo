@@ -37,32 +37,41 @@ Restaurant reservation system. Create an account, reserve a table at your favori
     laravelsail/php83-composer:latest \
     composer install --ignore-platform-reqs
     ````
-4. **Start the development server**:
+
+4. **Create Storage/framework folders if not present**:
+    ```bash
+    cd storage/
+    mkdir -p framework/{sessions,views,cache}
+    chmod -R 775 framework
+    cd ..
+    ````
+   
+5. **Start the docker containers**:
     ```bash
     ./vendor/bin/sail up -d
     ```
    
-5. **Generate an application key**:
+6. **Generate an application key**:
     ```bash
     ./vendor/bin/sail artisan key:generate
     ```
 
-6. **Run database migrations and seeders**:
+7. **Run database migrations and seeders**:
     ```bash
     ./vendor/bin/sail artisan migrate:fresh --seed
     ```
-7. **Install node modules**:
+8. **Install JavaScript dependencies**:
     ```bash
     ./vendor/bin/sail npm i
     ```
 
-8. **Compile node modules**:
+9. **Compile dependencies**:
     ```bash
     ./vendor/bin/sail npm run dev
     ```
 
-9. **Access the application**:
-    - Visit `http://localhost` in your browser.
+10. **Access the application**:
+     - Visit `http://localhost` in your browser.
 
 ### Local Setup
 
@@ -81,34 +90,31 @@ Restaurant reservation system. Create an account, reserve a table at your favori
     ```bash
     composer install
     ```
-
-4. **Install JavaScript dependencies**:
+   
+4. **Create Storage/framework folders if not present**:
     ```bash
-    npm install
-    ```
-
+    cd storage/
+    mkdir -p framework/{sessions,views,cache}
+    chmod -R 775 framework
+    cd ..
+    ````
+   
 5. **Generate an application key**:
     ```bash
     php artisan key:generate
     ```
 
-6. **Set up the database**:
-    - Update the `.env` file with your database connection details:
-        ```env
-        DB_CONNECTION=mysql
-        DB_HOST=127.0.0.1
-        DB_PORT=3306
-        DB_DATABASE=your-database-name
-        DB_USERNAME=your-database-username
-        DB_PASSWORD=your-database-password
-        ```
-
-7. **Run database migrations and seeders**:
+6. **Run database migrations and seeders**:
     ```bash
     php artisan migrate --seed
     ```
 
-8. **Compile the assets**:
+7. **Install JavaScript dependencies**:
+    ```bash
+    npm install
+    ```
+   
+8. **Compile dependencies**:
     ```bash
     npm run dev
     ```
