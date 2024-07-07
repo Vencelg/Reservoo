@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReviewRequest;
+use App\Models\Restaurant;
 use App\Services\Interfaces\RestaurantServiceInterface;
 use App\Services\Interfaces\ReviewServiceInterface;
 use Illuminate\Http\RedirectResponse;
@@ -24,12 +25,15 @@ class ReviewController extends Controller
 
     /**
      * @param int $id
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function list(int $id): View
+    public function list(int $id): View|RedirectResponse
     {
         $reviews =  $this->reviewService->list($id);
         $restaurant = $this->restaurantService->detail($id);
+        if (!($restaurant instanceof Restaurant)) {
+            return redirect()->back();
+        }
 
         return view('main.reviews.list')->with([
             'reviews' => $reviews,

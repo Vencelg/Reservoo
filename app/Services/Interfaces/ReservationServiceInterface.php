@@ -5,6 +5,7 @@ namespace App\Services\Interfaces;
 use App\Http\Requests\StoreReservationRequest;
 use App\Models\Reservation;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
 
 interface ReservationServiceInterface
 {
@@ -21,7 +22,7 @@ interface ReservationServiceInterface
 
     /**
      * @param int $id
-     * @return void
+     * @return bool|RedirectResponse
      */
-    public function destroy(int $id): void;
+    public function destroy(int $id): bool|RedirectResponse;
 }

@@ -6,6 +6,8 @@ use App\Http\Requests\StoreReviewRequest;
 use App\Models\Review;
 use App\Services\Interfaces\ReviewServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewService implements ReviewServiceInterface
 {
@@ -38,12 +40,19 @@ class ReviewService implements ReviewServiceInterface
 
     /**
      * @param int $id
-     * @return void
+     * @return bool|RedirectResponse
      */
-    public function destroy(int $id): void
+    public function destroy(int $id): bool|RedirectResponse
     {
-        $review = Review::findOrFail($id);
+        $review = Review::find($id);
+        if (!($review instanceof Review)) {
+            return redirect()->back();
+        }
 
-        $review->delete();
+        if ($review->user_id !== Auth::id()) {
+            return redirect()->back();
+        }
+
+        return $review->delete();
     }
 }

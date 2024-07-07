@@ -6,6 +6,7 @@ use App\Http\Requests\StoreReservationRequest;
 use App\Models\Reservation;
 use App\Services\Interfaces\ReservationServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationService implements ReservationServiceInterface
@@ -38,11 +39,19 @@ class ReservationService implements ReservationServiceInterface
 
     /**
      * @param int $id
-     * @return void
+     * @return bool|RedirectResponse
      */
-    public function destroy(int $id): void
+    public function destroy(int $id): bool|RedirectResponse
     {
-        $reservation = Reservation::findOrFail($id);
-        $reservation->delete();
+        $reservation = Reservation::find($id);
+        if (!($reservation instanceof Reservation)) {
+            return redirect()->back();
+        }
+
+        if ($reservation->user_id !== Auth::id()) {
+            return redirect()->back();
+        }
+
+        return $reservation->delete();
     }
 }

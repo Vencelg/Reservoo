@@ -34,7 +34,7 @@ class RestaurantFactory extends Factory
             'city' => $this->faker->city(),
             'postcode' => $this->faker->postcode(),
             'email' => $this->faker->safeEmail(),
-            'phone_number' => $this->faker->phoneNumber(),
+            'phone_number' => $this->faker->phoneNumber,
             'max_reservation_time' => $this->faker->numberBetween(2,4),
             'opening_time' => $this->faker->numberBetween(7, 9).":00",
             'closing_time' => $this->faker->numberBetween(20, 24).":00",

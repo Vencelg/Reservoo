@@ -35,9 +35,10 @@ class RestaurantService implements RestaurantServiceInterface
     public function detail(int $id): ?Restaurant
     {
         $restaurant = Restaurant::find($id);
-        $restaurant->setTimeslots($this->getTimeslots($restaurant));
-        $restaurant->setAvailableSeats($this->getAvailableSeats($restaurant));
-        $restaurant->setRating($this->getRating($restaurant));
+
+        $restaurant?->setTimeslots($this->getTimeslots($restaurant));
+        $restaurant?->setAvailableSeats($this->getAvailableSeats($restaurant));
+        $restaurant?->setRating($this->getRating($restaurant));
 
         return $restaurant;
     }
