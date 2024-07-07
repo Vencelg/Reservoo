@@ -212,6 +212,7 @@
         function renderStartTimes() {
             const reservationAvailableTimes = JSON.parse(reservationEndSelect.getAttribute('data-restaurant-available-times'));
             reservationAvailableTimes.pop();
+            console.log(reservationAvailableTimes)
             reservationStartSelect.innerHTML = '';
 
             const now = new Date();
@@ -230,6 +231,14 @@
                     reservationStartSelect.appendChild(option);
                 }
             });
+
+            if(reservationStartSelect.innerHTML === '') {
+                selectedDate.setDate(selectedDate.getDate() + 1);
+                const [day, month, year] = [selectedDate.getDate(), selectedDate.getMonth() + 1, selectedDate.getFullYear()];
+                const newUrl = new URL(window.location.href)
+                newUrl.searchParams.set('date', `${month}-${day}-${year}`)
+                window.location.href = newUrl.toString();
+            }
         }
 
         function addEventToForms() {

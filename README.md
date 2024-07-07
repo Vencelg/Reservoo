@@ -57,6 +57,7 @@ Restaurant reservation system. Create an account, reserve a table at your favori
     ```
 
 7. **Run database migrations and seeders**:
+    - Sometimes the first migration attempt fails, so you have to run it twice.
     ```bash
     ./vendor/bin/sail artisan migrate:fresh --seed
     ```
