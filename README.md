@@ -20,7 +20,7 @@ Restaurant reservation system. Create an account, reserve a table at your favori
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/Vencelg/Reservoo.git
+    git clone https://github.com/Vencelg/reservoo.git
     cd reservoo
     ```
 
@@ -28,40 +28,47 @@ Restaurant reservation system. Create an account, reserve a table at your favori
     ```bash
     cp .env.example .env
     ```
-
-3. **Install dependencies**:
+3. **Install composer dependencies**:
     ```bash
-    ./vendor/bin/sail composer install
+    docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
+    ````
+4. **Start the development server**:
+    ```bash
+    ./vendor/bin/sail up -d
     ```
-
-4. **Generate an application key**:
+   
+5. **Generate an application key**:
     ```bash
     ./vendor/bin/sail artisan key:generate
     ```
 
-5. **Run database migrations and seeders**:
+6. **Run database migrations and seeders**:
     ```bash
     ./vendor/bin/sail artisan migrate:fresh --seed
     ```
-
-6. **Start the development server**:
+7. **Install node modules**:
     ```bash
-    ./vendor/bin/sail up -d
+    ./vendor/bin/sail npm i
     ```
 
-7. **Compile the assets**:
+8. **Compile node modules**:
     ```bash
     ./vendor/bin/sail npm run dev
     ```
 
-8. **Access the application**:
+9. **Access the application**:
     - Visit `http://localhost` in your browser.
 
 ### Local Setup
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/Vencelg/Reservoo.git
+    git clone https://github.com/Vencelg/reservoo.git
     cd reservoo
     ```
 
