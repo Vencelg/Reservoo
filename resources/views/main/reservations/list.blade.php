@@ -17,7 +17,7 @@
                               clip-rule="evenodd"/>
                     </svg>
                     <div class="ml-5">
-                        <h1 class="text-5xl">{{$user->name}}</h1>
+                        <h1 class="lg:text-5xl sm:text-2xl">{{$user->name}}</h1>
                         <div>
                             <p>{{$user->email}}</p>
                         </div>

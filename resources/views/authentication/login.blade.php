@@ -2,7 +2,6 @@
 
 @section('auth-content')
     <div class="flex justify-center items-center h-screen w-screen">
-
         <div>
             @if(session('errors'))
                 <div id="alert-2" class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -23,6 +22,7 @@
             @endif
 
             <form method="post" action="{{route('login')}}" class="max-w-md mx-auto p-10 bg-gray-100 rounded-2xl m:w-[100rem] sm:w-[50rem]">
+                <img src="{{url('images/logo-no-bg.png')}}" class="xl:hidden w-2/3 m-auto mb-5" alt="Reservoo logo">
                 @csrf
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="email" name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value="{{ old('email') }}" required />

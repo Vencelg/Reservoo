@@ -2,7 +2,6 @@
 
 @section('auth-content')
     <div class="flex justify-center items-center h-screen w-screen">
-
         <div>
             @if(session('errors'))
                 <div id="alert-2" class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -23,6 +22,7 @@
             @endif
 
             <form method="post" action="{{route('register')}}" class="max-w-md mx-auto p-10 bg-gray-100 rounded-2xl m:w-[100rem] sm:w-[50rem]">
+                <img src="{{url('images/logo-no-bg.png')}}" class="xl:hidden w-2/3 m-auto mb-5" alt="Reservoo logo">
                 @csrf
                 <div class="grid md:grid-cols-2 md:gap-6">
                     <div class="relative z-0 w-full mb-5 group">

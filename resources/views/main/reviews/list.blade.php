@@ -4,8 +4,8 @@
 @section('main-content')
     <div class="bg-gray-50 min-h-full">
         <div style="background-image: url({{$restaurant->banner_url}})" class="bg-cover bg-center bg-no-repeat h-[40vh]">
-            <div class="bg-black bg-opacity-50 h-full text-white pl-5 pb-5 flex justify-start items-end">
-                <h1 class="text-5xl">{{$restaurant->name}}</h1>
+            <div class="bg-black bg-opacity-50 h-full text-white pl-5 pb-5 flex lg:justify-start lg:items-end flex-col lg:flex-row justify-end items-start">
+                <h1 class="md:text-5xl md:mb-0 mb-3 text-3xl">{{$restaurant->name}}</h1>
                 <div class="flex items-center ml-3 mb-2">
                     <div class="flex items-center">
                         <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
