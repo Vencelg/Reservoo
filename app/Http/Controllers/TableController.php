@@ -34,6 +34,9 @@ class TableController extends Controller
             : Carbon::now()->format('Y-m-d');
         $tables = $this->tableService->list($id, $date);
         $restaurant = $this->restaurantService->detail($id);
+        if (!($restaurant instanceof Restaurant)) {
+            return redirect()->back();
+        }
 
         return view('main.tables.list', [
             'restaurant' => $restaurant,

@@ -4,7 +4,6 @@ namespace App\Services\Interfaces;
 
 use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\RedirectResponse;
 
 interface RestaurantServiceInterface
 {
@@ -16,9 +15,9 @@ interface RestaurantServiceInterface
 
     /**
      * @param int $id
-     * @return Restaurant|RedirectResponse
+     * @return Restaurant|null
      */
-    public function detail(int $id): Restaurant|RedirectResponse;
+    public function detail(int $id): ?Restaurant;
 
     /**
      * @param Restaurant $restaurant

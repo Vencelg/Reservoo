@@ -31,6 +31,9 @@ class ReviewController extends Controller
     {
         $reviews =  $this->reviewService->list($id);
         $restaurant = $this->restaurantService->detail($id);
+        if (!($restaurant instanceof Restaurant)) {
+            return redirect()->back();
+        }
 
         return view('main.reviews.list')->with([
             'reviews' => $reviews,

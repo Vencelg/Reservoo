@@ -6,7 +6,6 @@ use App\Models\Restaurant;
 use App\Services\Interfaces\RestaurantServiceInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\RedirectResponse;
 
 class RestaurantService implements RestaurantServiceInterface
 {
@@ -31,18 +30,15 @@ class RestaurantService implements RestaurantServiceInterface
 
     /**
      * @param int $id
-     * @return Restaurant|RedirectResponse
+     * @return Restaurant|null
      */
-    public function detail(int $id): Restaurant|RedirectResponse
+    public function detail(int $id): ?Restaurant
     {
         $restaurant = Restaurant::find($id);
-        if (!($restaurant instanceof Restaurant)) {
-            return redirect()->back();
-        }
 
-        $restaurant->setTimeslots($this->getTimeslots($restaurant));
-        $restaurant->setAvailableSeats($this->getAvailableSeats($restaurant));
-        $restaurant->setRating($this->getRating($restaurant));
+        $restaurant?->setTimeslots($this->getTimeslots($restaurant));
+        $restaurant?->setAvailableSeats($this->getAvailableSeats($restaurant));
+        $restaurant?->setRating($this->getRating($restaurant));
 
         return $restaurant;
     }

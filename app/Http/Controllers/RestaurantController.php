@@ -42,6 +42,9 @@ class RestaurantController extends Controller
     public function detail(int $id): View|RedirectResponse
     {
         $restaurant = $this->restaurantService->detail($id);
+        if (!($restaurant instanceof Restaurant)) {
+            return redirect()->back();
+        }
 
         return view('main.restaurants.detail', [
             'restaurant' => $restaurant,
